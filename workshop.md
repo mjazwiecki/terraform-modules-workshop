@@ -398,7 +398,7 @@ subnet_name             = "subnet-terraform-workshop"
 subnet_address_prefix   = "10.0.0.0/24"
 EOL
 ```
-# 10. Deploy subnet into your vnet
+# 12. Deploy subnet into your vnet
 
 1. Initialise Terraform
 ```
