@@ -107,7 +107,7 @@ Reference: https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs
 # Query the installed Terraform version and extract the version number
 TF_VERSION=$(terraform version -json | jq -r .terraform_version)
 
-# Write the provided Terraform configuration into versions.tf
+# Write the provided Terraform configuration into terrarform-automation-intro-workshop/versions.tf
 cat <<EOL > versions.tf
 terraform {
   required_version = "= $TF_VERSION"
@@ -130,7 +130,7 @@ EOL
 # 6. Write code to deploy resource group
 Reference: https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/resource_group
 ```
-# Add the azurerm_resource_group resource to main.tf
+# Add the azurerm_resource_group resource to terrarform-automation-intro-workshop/main.tf
 echo 'resource "azurerm_resource_group" "resource_group" {
   name     = var.resource_group_name
   location = var.resource_group_location
@@ -141,7 +141,7 @@ echo 'resource "azurerm_resource_group" "resource_group" {
 ```
 
 ```
-# Write the provided variables configuration into variables.tf
+# Write the provided variables configuration into terrarform-automation-intro-workshop/variables.tf
 cat <<EOL > variables.tf
 variable "subscription_id" {
   description = "The subscription ID to use"
@@ -175,7 +175,7 @@ EOL
 # 7. Use terraform.tfvars for variables substitution
 Reference: https://developer.hashicorp.com/terraform/language/values/variables#variable-definitions-tfvars-files
 ```
-# Write the provided variables into terraform.tfvars
+# Write the provided variables into terrarform-automation-intro-workshop/terraform.tfvars
 cat <<EOL > terraform.tfvars
 subscription_id         = "{fill in with your subscription id}"
 resource_group_name     = "rg-terraform-workshop"
@@ -208,7 +208,7 @@ cd modules
 mkdir -p vnet && cd vnet && touch {main,outputs,variables,versions}.tf
 ```
 ```
-# Write the provided Terraform resources into main.tf
+# Write the provided Terraform resources into terrarform-automation-intro-workshop/modules/vnet/main.tf
 cat <<EOL > main.tf
 resource "azurerm_virtual_network" "this" {
   name                = var.vnet_name
@@ -222,7 +222,7 @@ EOL
 ```
 Fill in needed variables into variables.tf
 ```
-# Write the provided variables configuration into variables.tf
+# Write the provided variables configuration into terrarform-automation-intro-workshop/modules/vnet/variables.tf
 cat <<EOL > variables.tf
 variable "vnet_name" {
   description = "Name of the virtual network"
@@ -252,7 +252,7 @@ EOL
 ```
 Create output for vnet name
 ```
-# Write the provided Terraform resources into main.tf
+# Fill in outputs into terrarform-automation-intro-workshop/modules/vnet/outputs.tf
 cat <<EOL > outputs.tf
 output "vnet_name" {
   value       = azurerm_virtual_network.this.name
@@ -265,7 +265,7 @@ Pin azurerm terraform and provider version:
 # Query the installed Terraform version and extract the version number
 TF_VERSION=$(terraform version -json | jq -r .terraform_version)
 
-# Write the provided Terraform configuration into versions.tf
+# Write the provided Terraform configuration into terrarform-automation-intro-workshop/modules/vnet/versions.tf
 cat <<EOL > versions.tf
 terraform {
   required_providers {
@@ -279,7 +279,7 @@ EOL
 ```
 Add a vnet module call into terrarform-automation-intro-workshop/main.tf
 ```
-# Append the provided module configuration into main.tf
+# Append the provided module call into main.tf
 cat <<EOL >> main.tf
 
 module "vnet" {
@@ -295,7 +295,7 @@ EOL
 ```
 Add vnet related variable values into terraform.tfvars
 ```
-# Append the provided variables to terraform.tfvars
+# Append the provided variables to terrarform-automation-intro-workshop/terraform.tfvars
 cat <<EOL >> terraform.tfvars
 vnet_name               = "vnet-terraform-workshop"
 vnet_address_space      = ["10.0.0.0/16"]
@@ -310,7 +310,7 @@ cd modules
 mkdir -p subnet && cd subnet && touch {main,outputs,variables,versions}.tf
 ```
 ```
-# Write the provided Terraform resources into main.tf
+# Write the provided Terraform resources into terrarform-automation-intro-workshop/modules/subnet/main.tf
 cat <<EOL > main.tf
 resource "azurerm_subnet" "this" {
   name                 = var.subnet_name
@@ -320,9 +320,9 @@ resource "azurerm_subnet" "this" {
 }
 EOL
 ```
-Fill in needed variables into variables.tf
+Fill in needed variables into terrarform-automation-intro-workshop/modules/subnet/variables.tf
 ```
-# Write the provided variables configuration into variables.tf
+# Write the provided variables configuration into terrarform-automation-intro-workshop/modules/subnet/variables.tf
 cat <<EOL > variables.tf
 variable "vnet_name" {
   description = "Name of the virtual network"
@@ -350,7 +350,7 @@ Pin azurerm terraform and provider version:
 # Query the installed Terraform version and extract the version number
 TF_VERSION=$(terraform version -json | jq -r .terraform_version)
 
-# Write the provided Terraform configuration into versions.tf
+# Write the provided Terraform configuration into terrarform-automation-intro-workshop/modules/subnet/versions.tf
 cat <<EOL > versions.tf
 terraform {
   required_providers {
@@ -377,7 +377,7 @@ module "subnet" {
 }
 EOL
 ```
-Add subnet related variable values into terraform.tfvars
+Add subnet related variable values into terrarform-automation-intro-workshop/terraform.tfvars
 ```
 # Append the provided variables to terraform.tfvars
 cat <<EOL >> terraform.tfvars
