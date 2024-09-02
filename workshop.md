@@ -301,7 +301,20 @@ vnet_name               = "vnet-terraform-workshop"
 vnet_address_space      = ["10.0.0.0/16"]
 EOL
 ```
-# 10. Deploy vnet into your resource group (see 8)
+# 10. Deploy vnet into your resource group
+
+1. Initialise Terraform
+```
+terraform init
+```
+2. Validate changes shown by Terraform plan
+```
+terraform plan
+```
+3. Apply changes
+```
+terraform apply
+```
 
 # 11. Build subnet module
 Reference: https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/subnet
@@ -385,4 +398,17 @@ subnet_name             = "subnet-terraform-workshop"
 subnet_address_prefix   = "10.0.0.0/24"
 EOL
 ```
-# 10. Deploy subnet into your vnet (see 8)
+# 10. Deploy subnet into your vnet
+
+1. Initialise Terraform
+```
+terraform init
+```
+2. Validate changes shown by Terraform plan
+```
+terraform plan
+```
+3. Apply changes
+```
+terraform apply
+```
