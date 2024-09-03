@@ -220,7 +220,7 @@ resource "azurerm_virtual_network" "this" {
 }
 EOL
 ```
-Fill in needed variables into variables.tf
+Fill in needed variables into terrarform-automation-intro-workshop/modules/vnet/variables.tf
 ```
 # Write the provided variables configuration into terrarform-automation-intro-workshop/modules/vnet/variables.tf
 cat <<EOL > variables.tf
@@ -290,6 +290,21 @@ module "vnet" {
   resource_group_name = azurerm_resource_group.resource_group.name
   vnet_address_space  = var.vnet_address_space
   tags                = var.common_tags
+}
+EOL
+```
+Fill in needed variables into top level terrarform-automation-intro-workshop/variables.tf
+```
+# Write the provided variables configuration into terrarform-automation-intro-workshop/modules/vnet/variables.tf
+cat <<EOL > variables.tf
+variable "vnet_name" {
+  description = "Name of the virtual network"
+  type        = string
+}
+
+variable "vnet_address_space" {
+  description = "Address space of the virtual network"
+  type        = list(string)
 }
 EOL
 ```
@@ -387,6 +402,21 @@ module "subnet" {
   resource_group_name   = azurerm_resource_group.resource_group.name
   subnet_name           = var.subnet_name
   subnet_address_prefix = var.subnet_address_prefix
+}
+EOL
+```
+Fill in needed variables into top level terrarform-automation-intro-workshop/variables.tf
+```
+# Write the provided variables configuration into terrarform-automation-intro-workshop/modules/vnet/variables.tf
+cat <<EOL > variables.tf
+variable "subnet_name" {
+  description = "Name of the first subnet"
+  type        = string
+}
+
+variable "subnet_address_prefix" {
+  description = "Address prefix of the subnet"
+  type        = string
 }
 EOL
 ```
